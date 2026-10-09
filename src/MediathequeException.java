@@ -7,11 +7,12 @@
  * Une exception unchecked (RuntimeException) serait adaptée à une erreur
  * de programmation (ex. argument null), pas à une situation normale de la médiathèque.
  */
-public class MediathequeException extends Exception{
-public MediathequeException(String message){
-    super(message);
+public abstract class MediathequeException extends Exception {
+    protected MediathequeException(String message) {
+        super(message);
+    }
 
-}public MediathequeException(String message,Throwable cause){
-    super(message,cause);
+    protected MediathequeException(String message, Throwable cause) {
+        super(message, cause);
     }
 }
