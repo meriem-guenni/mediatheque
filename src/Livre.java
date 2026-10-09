@@ -11,9 +11,10 @@ public class Livre extends Document implements Empruntable {
     @Override public String descriptionCourte(){
         return "[livre]"+getTitre()+"("+annee+"),"+auteur+","+nbPages+"p.";
     }
-    @Override public void emprunter() {
+    @Override public void emprunter() throws DocumentIndisponibleException {
         if (!disponible)
-            throw new  IllegalStateException("deja emprunter:"+ getTitre());
+            throw new DocumentIndisponibleException ("deja emprunter:"+ getTitre(),
+         new IllegalStateException("le livre n est pas disponible"));
         disponible=false;
     }
     @Override public void rendre(){

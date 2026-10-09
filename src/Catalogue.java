@@ -1,5 +1,5 @@
 import java.util.*;
-public class catalogue<T extends Document> {
+public class Catalogue<T extends Document> {
     private final List<T>elements=new ArrayList<>();
     public void ajouter(T element){elements.add(element);}
     public Optional<T> rechercherParTitre(String titre){
