@@ -5,14 +5,16 @@ public class EmpruntManager {
         this.catalogue = catalogue;
     }
 
-    public void emprunter(String titre) throws DocumentIndisponibleException {
+    public void emprunter(String titre) throws MediathequeException {
         Document d = catalogue.rechercherParTitre(titre)
-                .orElseThrow(() -> new IllegalArgumentException("Document introuvable : " + titre));
+                .orElseThrow(() -> new DocumentIntrouvableException("Document introuvable : " + titre));
 
         if (d instanceof Empruntable e) {
             e.emprunter();
         } else {
-            throw new IllegalArgumentException("Document non empruntable : " + titre);
+            throw new DocumentIndisponibleException(
+                    "Document non empruntable : " + titre,
+                    new UnsupportedOperationException("Consultation sur place"));
         }
     }
 }
